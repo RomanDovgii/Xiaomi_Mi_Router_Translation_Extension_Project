@@ -133,7 +133,17 @@ if (currentPath.includes(`/cgi-bin/luci/`)) {
         const problems = `Common Problems`;
         const service = `Service Hotline`;
 
+        const footer = document.querySelector(`#ft`);
+        const romVersion = footer.querySelector(`p.rom-ver`);
+
+        const romVerText = romVersion
+                           ? romVersion.innerHTML.replace(`系统版本`, `System Version`)
+                                         .replace(`稳定版`, `stable`)
+                                         .replace(`地址`, ` address`)
+                           : ``;
+
         const footerInnerHTML = `
+        ${romVerText}
         <p>
             © 2015 ${router}
             <span>|</span>
@@ -149,9 +159,7 @@ if (currentPath.includes(`/cgi-bin/luci/`)) {
             <span>|</span>
             ${service}  400-100-5678
         </p>
-        `;
-
-        const footer = document.querySelector(`#ft`);
+        `;       
 
         footer.innerHTML = footerInnerHTML;
     };
