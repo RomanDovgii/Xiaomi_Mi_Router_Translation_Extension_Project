@@ -1,0 +1,13 @@
+# Files and folders of the OS
+.DS_Store
+Thumb.db
+
+# Editor Files
+.idea
+*.sublime*
+.vscode
+
+# Additional files
+*.log*
+node_modules/
+public/bundle.jestpublic/bundle.js.map

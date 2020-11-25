@@ -5,63 +5,7 @@ const currentPath = window.location.pathname;
 
 if (currentPath.includes(`/cgi-bin/luci/`)) {
     // ===== Constants ===== //
-    const AppRouteMain = {
-        LOGIN: `/web`,
-        HOME: `/web/home`,
-        STORE: `/web/store`,
-        SETTING: `/web/setting`,
-        PROSETTING: `/web/prosetting`   
-    };
     
-    const AppRouteSetting = {
-        WIFI_SETTINGS: `/wifi`,
-        WAN_sETTINGS: `/wan`,
-        SAFETY_SETTINGS: `/safe`,
-        LAN_SETTINGS: `/lannetset`,
-        UPDATE_SETTINGS: `/upgrade`,
-    };
-    
-    const AppRouteProsetting = {
-        QOS_SETTINGS: `/qos`,
-        DHCP_SETTINGS: `/dhcpipmacband`,
-        DDNS_SETTINGS: `/ddns`,
-        NAT_SETTINGS: `/nat`,
-        VPN_SETTINGS: `/vpn`,
-        UPNP_SETTIGNS: `/upnp`
-    };
-    
-    const name = {
-        DEVICES: {
-            CHINESE: `终端设备`,
-            ENGLISH: `Devices`,
-            RUSSIAN: `Устройства`
-        },
-        INTERNET: {
-            CHINESE: `互联网`,
-            ENGLISH: `Internet`,
-            RUSSIAN: `Интернет`
-        },
-        STATUS: {
-            CHINESE: `路由状态`,
-            ENGLISH: `Status`,
-            RUSSIAN: `Статус`
-        },
-        STORAGE: {
-            CHINESE: `存储状态`,
-            ENGLISH: `Storage`,
-            RUSSIAN: `Хранилище`
-        },
-        SETTINGS_COMMON: {
-            CHINESE: `常用设置`,
-            ENGLISH: `Settings`,
-            RUSSIAN: `Настройки`
-        },
-        SETTINGS_ADVANCED: {
-            CHINESE: `高级设置`,
-            ENGLISH: `Advanced`,
-            RUSSIAN: `Дополнительно`
-        }
-    }
     
     // ===== Functions ===== //
     
@@ -107,11 +51,6 @@ if (currentPath.includes(`/cgi-bin/luci/`)) {
         
         passwordInput.placeholder = inputPlaceholder;
     };
-    
-    const translateTitle = () => {
-        const title = document.querySelector(`title`);
-        title.innerText = `Xiaomi Router`
-    }
     
     const translateNavigation = () => {
         const navigationWrapper = document.querySelector(`#nav`);
