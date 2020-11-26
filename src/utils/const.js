@@ -25,7 +25,7 @@ export const AppRouteProsetting = {
   UPNP_SETTIGNS: `/upnp`
 };
 
-export const name = {
+export const navigationMainText = {
   DEVICES: {
       CHINESE: `终端设备`,
       ENGLISH: `Devices`,
