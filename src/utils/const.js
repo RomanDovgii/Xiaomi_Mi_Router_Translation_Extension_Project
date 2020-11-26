@@ -8,6 +8,12 @@ export const AppRouteMain = {
   PROSETTING: `/web/prosetting`
 };
 
+export const AppRouteStatusHash = {
+  DEVICES: `#devices`,
+  ROUTER: `#router`,
+  INTERNET: `#internet`
+};
+
 export const AppRouteSetting = {
   WIFI_SETTINGS: `/wifi`,
   WAN_sETTINGS: `/wan`,
@@ -26,16 +32,6 @@ export const AppRouteProsetting = {
 };
 
 export const navigationMainText = {
-  DEVICES: {
-      CHINESE: `终端设备`,
-      ENGLISH: `Devices`,
-      RUSSIAN: `Устройства`
-  },
-  INTERNET: {
-      CHINESE: `互联网`,
-      ENGLISH: `Internet`,
-      RUSSIAN: `Интернет`
-  },
   STATUS: {
       CHINESE: `路由状态`,
       ENGLISH: `Status`,
@@ -57,3 +53,16 @@ export const navigationMainText = {
       RUSSIAN: `Дополнительно`
   }
 }
+
+export const NetMapText = {
+  DEVICES: {
+      CHINESE: `终端设备`,
+      ENGLISH: `Devices`,
+      RUSSIAN: `Устройства`
+  },
+  INTERNET: {
+      CHINESE: `互联网`,
+      ENGLISH: `Internet`,
+      RUSSIAN: `Интернет`
+  }
+};

@@ -2,8 +2,8 @@ import {XIAOMI_MI_ROUTER_PATH} from "./utils/const"
 
 import {translateCurrentPage} from "./components/translate-current-page/translate-current-page";
 
-const currentPath = window.location.pathname;
+const currentLocation = window.location;
 
-if (currentPath.includes(XIAOMI_MI_ROUTER_PATH)) {
-  translateCurrentPage(currentPath);
+if (currentLocation.pathname.includes(XIAOMI_MI_ROUTER_PATH)) {
+  translateCurrentPage(currentLocation);
 }

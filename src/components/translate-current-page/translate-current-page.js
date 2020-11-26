@@ -8,25 +8,26 @@ import {translateStatusPage} from "../translate-status-page/translate-status-pag
 
 translateGeneralParts();
 
-export const translateCurrentPage = (path) => {
+export const translateCurrentPage = (currentLocation) => {
+  const currentPath = currentLocation.pathname;
   switch (true) {
-    case path.includes(AppRouteMain.HOME):
+    case currentPath.includes(AppRouteMain.HOME):
       translateMainNavigation();
-      translateStatusPage();
+      translateStatusPage(currentLocation);
       break;
-    case path.includes(AppRouteMain.STORE):
-      translateMainNavigation();
-
-      break;
-    case path.includes(AppRouteMain.SETTING):
+    case currentPath.includes(AppRouteMain.STORE):
       translateMainNavigation();
 
       break;
-    case path.includes(AppRouteMain.PROSETTING):
+    case currentPath.includes(AppRouteMain.SETTING):
       translateMainNavigation();
 
       break;
-    case path.includes(AppRouteMain.LOGIN):
+    case currentPath.includes(AppRouteMain.PROSETTING):
+      translateMainNavigation();
+
+      break;
+    case currentPath.includes(AppRouteMain.LOGIN):
       translateLoginPage();
       break;
   }
