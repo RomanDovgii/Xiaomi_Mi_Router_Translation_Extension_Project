@@ -6,9 +6,8 @@ import {translateMainNavigation} from "../translate-main-navigation/translate-ma
 import {translateLoginPage} from "../translate-login-page/translate-login-page";
 import {translateStatusPage} from "../translate-status-page/translate-status-page";
 
-translateGeneralParts();
-
 export const translateCurrentPage = (currentLocation) => {
+  translateGeneralParts();
   const currentPath = currentLocation.pathname;
   switch (true) {
     case currentPath.includes(AppRouteMain.HOME):
