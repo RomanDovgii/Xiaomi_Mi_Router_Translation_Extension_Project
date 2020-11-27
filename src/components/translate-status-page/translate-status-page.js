@@ -1,6 +1,7 @@
 import {AppRouteStatusHash} from "../../utils/const";
 import {ranslateNetMapDevices} from "./modules/translate-net-map-devices";
 import {ranslateNetMapInternet} from "./modules/translate-net-map-internet";
+import {translateRouterInfo} from "./modules/translate-router-info";
 
 const onHashChange = () => {
   const currentHash = window.location.hash;
@@ -10,17 +11,21 @@ const onHashChange = () => {
       console.log(`devices`);
       break;
     case (currentHash === AppRouteStatusHash.ROUTER):
-      console.log(`router`);
+      translateRouterInfo();
       break;
     case (currentHash === AppRouteStatusHash.INTERNET):
       console.log(`internet`);
+      break;
+    default:
+      window.removeEventListener(`hashchange`, onHashChange);
       break;
   }
 }
 
 export const translateStatusPage = (path) => {
   ranslateNetMapDevices();
-  ranslateNetMapInternet()
+  ranslateNetMapInternet();
+  onHashChange();
 
   window.addEventListener(`hashchange`, onHashChange);
 };
