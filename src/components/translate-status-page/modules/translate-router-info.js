@@ -1,3 +1,34 @@
+const translateFirstInformationBlock = (mutationObserver) => {
+  const routerInfo = document.querySelector(`.routerinfo`);
+
+  const headingWrapper = routerInfo.querySelector(`.hd`);
+  const headingThirdLevel = headingWrapper.querySelector(`h3`);
+
+  headingThirdLevel.textContent = `Router Information`;
+
+  const tableWrapper = routerInfo.querySelector(`.bd`);
+  const tableBody = tableWrapper.querySelector(`tbody`);
+
+  mutationObserver.observe(tableBody, {
+    attributes: true,
+    characterData: true,
+    childList: true,
+    subtree: true,
+    attributeOldValue: true,
+    characterDataOldValue: true
+  });
+
+  const rows = tableBody.querySelectorAll(`tr`);
+  const tableHeadings = rows[1].querySelectorAll(`th`);
+  const routerModel = tableHeadings[0];
+  const romVersion = tableHeadings[1];
+  const mac = tableHeadings[2];
+
+  routerModel.textContent = `Router Model`;
+  romVersion.textContent = `System ROM Version`;
+  mac.textContent = `MAC Address`;
+};
+
 export const translateRouterInfo = () => {
   const mutationObserver = new MutationObserver((mutations) => {
     mutations.forEach(mutation => {
@@ -16,29 +47,7 @@ export const translateRouterInfo = () => {
     });
   });
 
-  const routerInfo = document.querySelector(`.routerinfo`);
+  translateFirstInformationBlock(mutationObserver);
 
-  const headingWrapper = routerInfo.querySelector(`.hd`);
-  const headingThirdLevel = headingWrapper.querySelector(`h3`);
 
-  const tableWrapper = routerInfo.querySelector(`.bd`);
-  const tableBody = tableWrapper.querySelector(`tbody`);
-
-  mutationObserver.observe(tableBody, {
-    attributes: true,
-    characterData: true,
-    childList: true,
-    subtree: true,
-    attributeOldValue: true,
-    characterDataOldValue: true
-  });
-
-  const rows = tableBody.querySelectorAll(`tr`);
-  const tableHeadings = rows[1].querySelectorAll(`th`);
-
-  tableHeadings[0].textContent = `Router Model`;
-  tableHeadings[1].textContent = `System ROM Version`;
-  tableHeadings[2].textContent = `MAC Address`;
-
-  headingThirdLevel.textContent = `Router Information`;
 };
