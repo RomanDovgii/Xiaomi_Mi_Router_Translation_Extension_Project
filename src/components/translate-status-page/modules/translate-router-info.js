@@ -29,6 +29,15 @@ const translateFirstInformationBlock = (mutationObserver) => {
   mac.textContent = `MAC Address`;
 };
 
+const translateSpeedPanel = (mutationObserver) => {};
+
+const translateDevicesPanel = (mutationObserver) => {};
+
+
+const translateCPUUsage = (mutationObserver) => {};
+
+const translateRAMUsage = (mutationObserver) => {};
+
 export const translateRouterInfo = () => {
   const mutationObserver = new MutationObserver((mutations) => {
     mutations.forEach(mutation => {
