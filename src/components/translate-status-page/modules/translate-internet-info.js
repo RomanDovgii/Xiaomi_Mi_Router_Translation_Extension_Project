@@ -1,6 +1,6 @@
 export const translateInternetInfo = () => {
   const mutationObserver = new MutationObserver((mutations) => {
-    mutations.forEach(mutation => {
+    mutations.forEach((mutation) => {
       let oldText;
 
       switch (true) {

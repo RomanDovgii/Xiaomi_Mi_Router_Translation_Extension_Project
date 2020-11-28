@@ -29,7 +29,7 @@ const translateFirstInformationBlock = (mutationObserver) => {
   mac.textContent = `MAC Address`;
 };
 
-const translateStatusPanel = (panel, mutationObserver) => {
+const translateStatusPanel = (panel) => {
   const heading = panel.querySelector(`h3`);
   const textElement = panel.querySelector(`p`);
   const textElementHTML = textElement.innerHTML;
@@ -82,7 +82,7 @@ const translateStatusPanel = (panel, mutationObserver) => {
 
 export const translateRouterInfo = () => {
   const mutationObserver = new MutationObserver((mutations) => {
-    mutations.forEach(mutation => {
+    mutations.forEach((mutation) => {
       let oldText;
 
       switch (true) {
@@ -106,8 +106,8 @@ export const translateRouterInfo = () => {
   const cpuUsage = statusPanels[2];
   const ramUsage = statusPanels[3];
 
-  translateStatusPanel(networkUsage, mutationObserver);
-  translateStatusPanel(networkUsageByDevice, mutationObserver);
-  translateStatusPanel(cpuUsage, mutationObserver);
-  translateStatusPanel(ramUsage, mutationObserver);
+  translateStatusPanel(networkUsage);
+  translateStatusPanel(networkUsageByDevice);
+  translateStatusPanel(cpuUsage);
+  translateStatusPanel(ramUsage);
 };

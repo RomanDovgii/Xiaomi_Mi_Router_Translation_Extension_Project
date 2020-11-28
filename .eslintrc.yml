@@ -5,7 +5,5 @@ parserOptions:
 env:
   es6: true
   browser: true
-  commonjs: true
-  jest: true
 
-  extends: 'htmlacademy/es6'
+extends: 'htmlacademy/es6'
