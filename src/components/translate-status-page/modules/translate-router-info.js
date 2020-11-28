@@ -94,12 +94,6 @@ export const translateRouterInfo = () => {
           oldText = mutation.target.textContent;
           mutation.target.textContent = oldText.replace(`稳定版`, `Stable`);
           break;
-        case mutation.target.textContent.includes(`实时下行流量: `):
-          console.log(`it's ok`)
-          oldText = mutation.target.textContent;
-          mutation.target.textContent = oldText.replace(`实时下行流量`, `Download Speed`);
-          mutation.target.textContent = oldText.replace(`实时上行流量`, `Upload Speed`);
-          break;
       }
     });
   });
