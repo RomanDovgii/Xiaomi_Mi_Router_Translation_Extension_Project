@@ -29,14 +29,25 @@ const translateFirstInformationBlock = (mutationObserver) => {
   mac.textContent = `MAC Address`;
 };
 
-const translateSpeedPanel = (mutationObserver) => {};
+const translateStatusPanel = (panel, mutationObserver) => {
+  const heading = panel.querySelector(`h3`);
+  const headingText = heading.textContent;
 
-const translateDevicesPanel = (mutationObserver) => {};
-
-
-const translateCPUUsage = (mutationObserver) => {};
-
-const translateRAMUsage = (mutationObserver) => {};
+  switch (true) {
+    case headingText === `实时网络状态`:
+      heading.textContent = `Network Status`;
+      break;
+    case headingText === `终端流量统计`:
+      heading.textContent = `Traffic Statistics`;
+      break;
+    case headingText === `当前CPU状态`:
+      heading.textContent = `CPU Usage`;
+      break;
+    case headingText === `当前内存状态`:
+      heading.textContent = `RAM Usage`;
+      break;
+  }
+};
 
 export const translateRouterInfo = () => {
   const mutationObserver = new MutationObserver((mutations) => {
@@ -58,5 +69,14 @@ export const translateRouterInfo = () => {
 
   translateFirstInformationBlock(mutationObserver);
 
+  const statusPanels = document.querySelectorAll(`.status-panel`);
+  const networkUsage = statusPanels[0];
+  const networkUsageByDevice = statusPanels[1];
+  const cpuUsage = statusPanels[2];
+  const ramUsage = statusPanels[3];
 
+  translateStatusPanel(networkUsage, mutationObserver);
+  translateStatusPanel(networkUsageByDevice, mutationObserver);
+  translateStatusPanel(cpuUsage, mutationObserver);
+  translateStatusPanel(ramUsage, mutationObserver);
 };
