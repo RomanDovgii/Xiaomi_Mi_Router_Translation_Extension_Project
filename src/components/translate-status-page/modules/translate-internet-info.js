@@ -1,18 +1,57 @@
+const translateBlock = (element, mutationObserver) => {
+  const heading = element.querySelector(`h3`);
+
+  let content;
+
+  switch (heading.textContent) {
+    case `外网状态`:
+      heading.textContent = `Network`;
+      content = element.querySelector(`.bd`);
+
+      mutationObserver.observe(content, {
+        attributes: true,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: true,
+        characterDataOldValue: true
+      });
+      return;
+    case `外网带宽`:
+      heading.textContent = `Bandwidth`;
+      content = element.querySelector(`tbody`);
+
+      const bandwidthTerms = content.querySelectorAll(`dt`);
+      const bandwidthMaxDownload = bandwidthTerms[0];
+      const bandwidthMaxUpload = bandwidthTerms[1];
+      bandwidthMaxUpload.textContent = `Max Upload:`;
+      bandwidthMaxDownload.textContent = `Max Download:`;
+
+      const buttonSpeedTest = content.querySelector(`#retestSpeed`);
+      const buttonBandSet = content.querySelector(`#manualSetting`);
+
+      buttonSpeedTest.textContent = `Set Automatically`;
+      buttonBandSet.textContent = `Set Manually`;
+      return;
+    default:
+      content = null;
+      return;
+  }
+};
+
 export const translateInternetInfo = () => {
   const mutationObserver = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
-      let oldText;
+      const terms = mutation.target.querySelectorAll(`dt`);
+      const type = terms[0];
+      const ip = terms[1];
+      const dns = terms[2];
+      const gateway = terms[3];
 
-      switch (true) {
-        case mutation.target.textContent.includes(`小米路由器3 Pro`):
-          oldText = mutation.target.textContent;
-          mutation.target.textContent = oldText.replace(`小米路由器3 Pro`, `Mi Router Pro `);
-          break;
-        case mutation.target.textContent.includes(`稳定版`):
-          oldText = mutation.target.textContent;
-          mutation.target.textContent = oldText.replace(`稳定版`, `Stable`);
-          break;
-      }
+      type.textContent = `Type:`;
+      ip.textContent = `External IP:`;
+      dns.textContent = `DNS:`;
+      gateway.textContent = `Gateway:`;
     });
   });
 
@@ -21,28 +60,6 @@ export const translateInternetInfo = () => {
   const network = internetPanels[0];
   const bandwidth = internetPanels[1];
 
-  // network translation
-
-  const networkHeading = network.querySelector(`h3`);
-  // const networkTerms = network.querySelector(`dt`);
-
-  // const networkTypeTerm = networkTerms[0];
-  // const networkIpTerm = networkTerms[1];
-  // const networkGateawayTerm = networkTerms[3];
-
-  networkHeading.textContent = `Network`;
-  // networkTypeTerm.textContent = `Connection Type`;
-  // networkIpTerm.textContent = `External IP`;
-  // networkGateawayTerm.textContent = `Gateway Address`;
-  // bandwidth translation
-
-  const bandwidthHeading = bandwidth.querySelector(`h3`);
-  // const bandwidthTerms = bandwidth.querySelector(`dt`);
-
-  // const bandwidthMaxDownload = bandwidthTerms[0];
-  // const bandwidthMaxUpload = bandwidthTerms[1];
-
-  bandwidthHeading.textContent = `Bandwidth`;
-  // bandwidthMaxUpload.textContent = `Max Upload`;
-  // bandwidthMaxDownload.textContent = `Max Download`;
+  translateBlock(network, mutationObserver);
+  translateBlock(bandwidth, mutationObserver);
 };
