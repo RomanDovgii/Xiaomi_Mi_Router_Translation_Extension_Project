@@ -42,16 +42,22 @@ const translateBlock = (element, mutationObserver) => {
 export const translateInternetInfo = () => {
   const mutationObserver = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
-      const terms = mutation.target.querySelectorAll(`dt`);
-      const type = terms[0];
-      const ip = terms[1];
-      const dns = terms[2];
-      const gateway = terms[3];
+      switch (true) {
+        case mutation.target.id === `wanStatusContent`:
+          const terms = mutation.target.querySelectorAll(`dt`);
+          const type = terms[0];
+          const ip = terms[1];
+          const dns = terms[2];
+          const gateway = terms[3];
 
-      type.textContent = `Type:`;
-      ip.textContent = `External IP:`;
-      dns.textContent = `DNS:`;
-      gateway.textContent = `Gateway:`;
+          type.textContent = `Type:`;
+          ip.textContent = `External IP:`;
+          dns.textContent = `DNS:`;
+          gateway.textContent = `Gateway:`;
+          return;
+        default:
+          return;
+      }
     });
   });
 
